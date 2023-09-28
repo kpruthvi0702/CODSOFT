@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    
+    <style>
+        .calculator {
+            width: 240px;
+            text-align: center;
+            background-color: rgb(16, 16, 16);
+            padding: 12px;
+            margin: 11%;
+
+        }
+
+        input {
+            width: 90%;
+            height: 40px;
+            margin: 5px;
+            text-align: right;
+            font-size: 20px;
+            border-radius: 25px;
+        }
+
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            border: grey;
+            padding: 5px;
+            margin: 3px;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .big {
+            width: 110px;
+        }
+
+        button:hover {
+            background-color: gainsboro;
+        }
+        .number{
+            background-color: rgb(118, 118, 118);
+        }
+        .sym{
+            background-color: darkgoldenrod;
+        }
+        .del{
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+    <div class="calculator">
+        <input type="text" id="result" readonly><br>
+        <button style="background-color: grey ;" clearResult()" class="big">C</button>
+        <button class="del" onclick="deletechar()">del</button>
+        <button class="sym" insertchar('/')">/</button>
+        <br>
+        <button class="number" onclick="insertchar('7')">7</button>
+        <button class="number" onclick="insertchar('8')">8</button>
+        <button class="number" onclick="insertchar('9')">9</button>
+        <button class="sym" onclick="insertchar('*')">*</button>
+        <br>
+        <button class="number" onclick="insertchar('4')">4</button>
+        <button class="number" onclick="insertchar('5')">5</button>
+        <button class="number" onclick="insertchar('6')">6</button>
+        <button class="sym" onclick="insertchar('-')">-</button>
+        <br>
+        <button class="number" onclick="insertchar('1')">1</button>
+        <button class="number" onclick="insertchar('2')">2</button>
+        <button class="number" onclick="insertchar('3')">3</button>
+        <button class="sym" onclick="insertchar('+')">+</button>
+        <br>
+        <button style="background-color: rgb(61, 60, 60);" insertchar('0')" class="big">0</button>
+        <button class="number" onclick="insertchar('.')">.</button>
+        <button class="sym" onclick="calculate()" >=</button>
+    </div>
+    <script>
+        let result = document.getElementById('result');
+
+        function insertchar(value) {
+            result.value += value;
+        }
+
+        function clearResult() {
+            result.value = '';
+        }
+
+        function deletechar() {
+            result.value = result.value.slice(0, -1);
+        }
+
+        function calculate() {
+            let answer = eval(result.value);
+            result.value = answer;
+        }
+    </script></center>
+</body>
+
+</html>
